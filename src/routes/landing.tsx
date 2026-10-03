@@ -8,6 +8,7 @@ import {
   CircleDollarSign,
   Clock3,
   MessageCircleMore,
+  ShieldCheck,
   Sparkles,
   Target,
   UserRoundPlus,
@@ -17,16 +18,17 @@ import {
 export const Route = createFileRoute("/landing")({
   head: () => ({
     meta: [
-      { title: "Fluxo Cliente — Pare de perder clientes no WhatsApp" },
+      { title: "Fluxo Cliente | Recupere oportunidades da sua clínica" },
       {
         name: "description",
         content:
-          "Organize clientes, acompanhe oportunidades e saiba quem precisa receber uma nova mensagem hoje.",
+          "Organize oportunidades, acompanhe clientes e recupere conversas que esfriaram no WhatsApp.",
       },
-      { property: "og:title", content: "Fluxo Cliente — Mais oportunidades para sua clínica" },
+      { property: "og:title", content: "Fluxo Cliente | Recupere oportunidades da sua clínica" },
       {
         property: "og:description",
-        content: "Transforme conversas esquecidas em novas oportunidades para sua clínica de estética.",
+        content:
+          "Organize oportunidades, acompanhe clientes e recupere conversas que esfriaram no WhatsApp.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -39,6 +41,32 @@ const priorities = [
   { name: "Mariana", note: "Pediu preço de preenchimento há 3 dias.", tone: "bg-destructive" },
   { name: "Ana", note: "Disse ‘vou pensar’ e não respondeu mais.", tone: "bg-chart-1" },
   { name: "Camila", note: "Demonstrou interesse, mas ainda não agendou.", tone: "bg-chart-4" },
+];
+
+const messageExamples = [
+  {
+    situation: "Pediu preço e sumiu",
+    message:
+      "Oi, Mariana! Passando com o orçamento do preenchimento que você pediu. Se ficou qualquer dúvida, me avisa por aqui. 😊",
+  },
+  {
+    situation: "Disse ‘vou pensar’",
+    message:
+      "Oi, Ana! Tudo bem? Passando para saber se ficou alguma dúvida sobre o procedimento. Se quiser, posso te explicar melhor como funciona.",
+  },
+  {
+    situation: "Não confirmou o agendamento",
+    message:
+      "Oi, Camila! Quer deixar seu horário reservado esta semana? Tenho vagas quinta e sexta, se preferir. 😊",
+  },
+];
+
+const trackingMetrics = [
+  ["Clientes acompanhados", "12"],
+  ["Follow-ups realizados", "7"],
+  ["Clientes recuperados", "8"],
+  ["Agendamentos recuperados", "6"],
+  ["Valor potencial recuperado", "R$ 7.480"],
 ];
 
 const faqs = [
@@ -126,8 +154,8 @@ function LandingPage() {
         <div className="mx-auto grid min-h-[720px] max-w-6xl items-center gap-14 px-5 py-20 lg:grid-cols-[1.02fr_.98fr] lg:px-8 lg:py-24">
           <div className="landing-rise max-w-2xl">
             <SectionLabel>Para clínicas de estética</SectionLabel>
-            <h1 className="text-5xl font-extrabold leading-[1.02] text-brand-deep sm:text-6xl lg:text-7xl">Pare de perder <span className="font-editorial italic font-normal text-brand">clientes</span> no WhatsApp.</h1>
-            <p className="mt-7 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">Veja quem demonstrou interesse nos seus procedimentos, quem parou de responder e quem precisa receber uma nova mensagem hoje.</p>
+            <h1 className="text-4xl font-extrabold leading-[1.05] text-brand-deep sm:text-5xl lg:text-6xl">Pare de perder clientes da sua clínica <span className="font-editorial italic font-normal text-brand">que pedem preço e somem no WhatsApp.</span></h1>
+            <p className="mt-7 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">Veja quem demonstrou interesse, quem parou de responder e quem precisa receber uma nova mensagem hoje.</p>
             <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center"><PrimaryLink>Testar grátis por 7 dias</PrimaryLink><span className="text-xs font-semibold text-muted-foreground">7 dias grátis • Cancele quando quiser</span></div>
             <div className="mt-7 flex flex-wrap gap-6 text-xs text-muted-foreground"><span className="flex items-center gap-2"><Check className="size-4 text-brand" />Sem integração obrigatória</span><span className="flex items-center gap-2"><Check className="size-4 text-brand" />Feito para clínicas reais</span></div>
           </div>
@@ -173,9 +201,22 @@ function LandingPage() {
       </section>
 
       <section className="bg-brand-wash py-24">
-        <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 lg:grid-cols-2 lg:px-8">
-          <div><SectionLabel>05 / Follow-up com IA</SectionLabel><h2 className="text-4xl font-extrabold leading-tight text-brand-deep sm:text-5xl">Saiba o que enviar sem parecer uma <span className="font-editorial italic font-normal text-brand">mensagem automática.</span></h2><div className="mt-8 flex flex-wrap gap-3">{["Mensagem personalizada", "Tom natural", "Sem pressão"].map((tag) => <span key={tag} className="rounded-full border border-brand/20 bg-background px-4 py-2 text-xs font-bold text-brand-deep">{tag}</span>)}</div></div>
-          <div className="rounded-lg border border-brand/15 bg-background p-6 shadow-lg shadow-brand-deep/5"><p className="text-sm text-muted-foreground">Cliente: “Vou pensar.”</p><div className="mt-5 rounded-md bg-brand-soft p-5 text-sm leading-7 text-brand-deep">Oi, Ana! Tudo bem? Passando para saber se ficou alguma dúvida sobre o procedimento. Se quiser, posso te explicar melhor como funciona 😊</div><p className="mt-5 flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.12em] text-brand"><Sparkles className="size-4" /> Sugestão do Fluxo Cliente</p></div>
+        <div className="mx-auto max-w-6xl px-5 lg:px-8">
+          <div className="max-w-2xl">
+            <SectionLabel>05 / Mensagens de exemplo</SectionLabel>
+            <h2 className="text-4xl font-extrabold leading-tight text-brand-deep sm:text-5xl">Saiba o que enviar sem parecer uma <span className="font-editorial italic font-normal text-brand">mensagem automática.</span></h2>
+            <p className="mt-6 text-lg leading-8 text-muted-foreground">Três situações comuns e uma sugestão de mensagem para cada uma.</p>
+          </div>
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {messageExamples.map((example) => (
+              <div key={example.situation} className="flex flex-col rounded-lg border border-brand/15 bg-background p-6 shadow-lg shadow-brand-deep/5">
+                <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-brand">{example.situation}</p>
+                <div className="mt-5 flex-1 rounded-md bg-brand-soft p-5 text-sm leading-7 text-brand-deep">{example.message}</div>
+                <p className="mt-5 flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.12em] text-brand"><Sparkles className="size-4" /> Sugestão do Fluxo Cliente</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-sm text-muted-foreground">Exemplos de demonstração da futura experiência. As mensagens não são enviadas automaticamente.</p>
         </div>
       </section>
 
@@ -187,7 +228,13 @@ function LandingPage() {
       </section>
 
       <section className="border-y border-border bg-brand-deep py-24 text-primary-foreground">
-        <div className="mx-auto max-w-6xl px-5 lg:px-8"><p className="mb-5 text-xs font-extrabold uppercase tracking-[0.18em] text-brand-bright">07 / Resultados</p><h2 className="text-4xl font-extrabold sm:text-5xl">Veja o que sua clínica conseguiu <span className="font-editorial italic font-normal text-brand-bright">recuperar.</span></h2><p className="mt-4 text-sm opacity-70">Exemplo visual de acompanhamento</p><div className="mt-12 grid gap-px overflow-hidden rounded-lg bg-primary-foreground/15 sm:grid-cols-2 lg:grid-cols-4">{[["Clientes recuperados", "12"], ["Agendamentos recuperados", "8"], ["Vendas recuperadas", "6"], ["Valor recuperado", "R$ 7.480"]].map(([label, value]) => <div key={label} className="bg-brand-deep p-7"><p className="text-3xl font-extrabold">{value}</p><p className="mt-3 text-sm opacity-70">{label}</p></div>)}</div></div>
+        <div className="mx-auto max-w-6xl px-5 lg:px-8">
+          <p className="mb-5 text-xs font-extrabold uppercase tracking-[0.18em] text-brand-bright">07 / O que você poderá acompanhar</p>
+          <h2 className="max-w-2xl text-4xl font-extrabold sm:text-5xl">Acompanhe o que importa no <span className="font-editorial italic font-normal text-brand-bright">dia a dia da clínica.</span></h2>
+          <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-brand-bright/40 bg-brand-bright/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.14em] text-brand-bright"><BarChart3 className="size-4" /> Exemplo ilustrativo</p>
+          <p className="mt-4 max-w-2xl text-sm opacity-70">Os números abaixo são apenas um exemplo de como o acompanhamento aparece. Não representam resultados de clientes.</p>
+          <div className="mt-12 grid gap-px overflow-hidden rounded-lg bg-primary-foreground/15 sm:grid-cols-2 lg:grid-cols-3">{trackingMetrics.map(([label, value]) => <div key={label} className="bg-brand-deep p-7"><p className="text-3xl font-extrabold">{value}</p><p className="mt-3 text-sm opacity-70">{label}</p></div>)}</div>
+        </div>
       </section>
 
       <section id="plano" className="mx-auto max-w-6xl px-5 py-24 lg:px-8">
@@ -198,9 +245,17 @@ function LandingPage() {
         <div className="mx-auto max-w-4xl px-5 lg:px-8"><SectionLabel>09 / Perguntas frequentes</SectionLabel><h2 className="text-4xl font-extrabold text-brand-deep sm:text-5xl">Dúvidas? A gente <span className="font-editorial italic font-normal text-brand">responde.</span></h2><div className="mt-10 divide-y divide-border border-y border-border">{faqs.map(([question, answer]) => <details key={question} className="group py-5"><summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-brand-deep"><span>{question}</span><ChevronDown className="size-5 shrink-0 text-brand transition group-open:rotate-180" /></summary><p className="max-w-2xl pt-4 text-sm leading-7 text-muted-foreground">{answer}</p></details>)}</div></div>
       </section>
 
+      <section className="border-b border-border px-5 py-16 lg:px-8">
+        <div className="mx-auto flex max-w-4xl flex-col items-center gap-4 text-center">
+          <ShieldCheck className="size-7 text-brand" />
+          <p className="text-lg font-bold text-brand-deep">Privacidade e segurança fazem parte da estrutura do Fluxo Cliente.</p>
+          <p className="max-w-2xl text-sm leading-7 text-muted-foreground">As informações dos seus clientes ficam na sua conta, visíveis só para você e para quem você autorizar.</p>
+        </div>
+      </section>
+
       <section className="px-5 py-24 lg:px-8"><div className="mx-auto max-w-4xl text-center"><BarChart3 className="mx-auto size-7 text-brand" /><h2 className="mt-7 text-4xl font-extrabold text-brand-deep sm:text-6xl">Pare de deixar oportunidades <span className="font-editorial italic font-normal text-brand">esfriarem.</span></h2><p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Descubra quem precisa da sua atenção e transforme conversas esquecidas em novas oportunidades.</p><div className="mt-8"><PrimaryLink>Começar meus 7 dias grátis</PrimaryLink></div></div></section>
 
-      <footer className="border-t border-border"><div className="mx-auto flex max-w-6xl flex-col gap-5 px-5 py-8 sm:flex-row sm:items-center sm:justify-between lg:px-8"><Logo /><p className="text-xs text-muted-foreground">© 2026 Fluxo Cliente. Feito para clínicas em movimento.</p></div></footer>
+      <footer className="border-t border-border"><div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 lg:px-8"><div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><Logo /><nav className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-muted-foreground" aria-label="Links do rodapé"><a href="#plano" className="transition hover:text-brand">Entrar</a><a href="/contato" className="transition hover:text-brand">Contato</a><a href="/privacidade" className="transition hover:text-brand">Política de Privacidade</a><a href="/termos" className="transition hover:text-brand">Termos de Uso</a></nav></div><p className="text-xs text-muted-foreground">© 2026 Fluxo Cliente. Feito para clínicas em movimento.</p></div></footer>
     </main>
   );
 }
