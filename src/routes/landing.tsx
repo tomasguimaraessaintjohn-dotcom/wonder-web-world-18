@@ -91,7 +91,9 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="mb-5 text-xs font-extrabold uppercase tracking-[0.18em] text-brand">{children}</p>;
 }
 
-function PrimaryLink({ children, href = "#plano" }: { children: React.ReactNode; href?: string }) {
+const APP_AUTH_URL = "https://appfluxocliente.app/auth";
+
+function PrimaryLink({ children, href = APP_AUTH_URL }: { children: React.ReactNode; href?: string }) {
   return (
     <a href={href} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-brand px-6 text-sm font-extrabold text-primary-foreground shadow-lg shadow-brand/15 transition hover:-translate-y-0.5 hover:bg-brand-deep focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2">
       {children}<ArrowRight className="size-4" />
@@ -146,7 +148,7 @@ function LandingPage() {
             <a href="#recursos" className="transition hover:text-brand">Recursos</a>
             <a href="#plano" className="transition hover:text-brand">Plano</a>
           </nav>
-          <a href="#plano" className="inline-flex min-h-10 items-center gap-2 rounded-md bg-brand px-4 text-xs font-extrabold text-primary-foreground transition hover:bg-brand-deep">Começar agora <ArrowRight className="size-3.5" /></a>
+          <a href={APP_AUTH_URL} className="inline-flex min-h-10 items-center gap-2 rounded-md bg-brand px-4 text-xs font-extrabold text-primary-foreground transition hover:bg-brand-deep">Começar agora <ArrowRight className="size-3.5" /></a>
         </div>
       </header>
 
@@ -255,7 +257,7 @@ function LandingPage() {
 
       <section className="px-5 py-24 lg:px-8"><div className="mx-auto max-w-4xl text-center"><BarChart3 className="mx-auto size-7 text-brand" /><h2 className="mt-7 text-4xl font-extrabold text-brand-deep sm:text-6xl">Pare de deixar oportunidades <span className="font-editorial italic font-normal text-brand">esfriarem.</span></h2><p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Descubra quem precisa da sua atenção e transforme conversas esquecidas em novas oportunidades.</p><div className="mt-8"><PrimaryLink>Começar meus 7 dias grátis</PrimaryLink></div></div></section>
 
-      <footer className="border-t border-border"><div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 lg:px-8"><div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><Logo /><nav className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-muted-foreground" aria-label="Links do rodapé"><a href="#plano" className="transition hover:text-brand">Entrar</a><a href="/contato" className="transition hover:text-brand">Contato</a><a href="/privacidade" className="transition hover:text-brand">Política de Privacidade</a><a href="/termos" className="transition hover:text-brand">Termos de Uso</a></nav></div><p className="text-xs text-muted-foreground">© 2026 Fluxo Cliente. Feito para clínicas em movimento.</p></div></footer>
+      <footer className="border-t border-border"><div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 lg:px-8"><div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><Logo /><nav className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-muted-foreground" aria-label="Links do rodapé"><a href={APP_AUTH_URL} className="transition hover:text-brand">Entrar</a><a href="/contato" className="transition hover:text-brand">Contato</a><a href="/privacidade" className="transition hover:text-brand">Política de Privacidade</a><a href="/termos" className="transition hover:text-brand">Termos de Uso</a></nav></div><p className="text-xs text-muted-foreground">© 2026 Fluxo Cliente. Feito para clínicas em movimento.</p></div></footer>
     </main>
   );
 }
