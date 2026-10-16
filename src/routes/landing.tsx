@@ -139,7 +139,7 @@ function DashboardPreview() {
 
 function LandingPage() {
   return (
-    <main id="inicio" className="overflow-hidden bg-background text-foreground">
+    <main id="inicio" className="landing-navy overflow-hidden bg-background text-foreground">
       <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:px-8">
           <Logo />
