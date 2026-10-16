@@ -194,3 +194,4 @@
 .landing-navy .text-brand-deep { color: oklch(0.97 0.01 250); }
 .landing-navy .bg-brand,
 .landing-navy .bg-brand-bright { color: oklch(0.18 0.05 262); }
+.landing-navy .bg-brand-soft, .landing-navy .bg-brand-soft * { color: oklch(0.18 0.05 262); }
