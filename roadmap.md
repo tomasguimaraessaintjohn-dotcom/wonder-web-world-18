@@ -9,3 +9,4 @@
 - [x] Metadados: título/descrição novos, sem "Lovable App"
 - [x] Revisão mobile (sem rolagem horizontal, botões grandes o suficiente)
 - [x] Teste final desktop/mobile e relatório
+- [x] Botões de WhatsApp na landing (hero, seção final e bolha flutuante) apontando para o número do criador

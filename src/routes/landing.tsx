@@ -101,6 +101,34 @@ function PrimaryLink({ children, href = APP_AUTH_URL }: { children: React.ReactN
   );
 }
 
+const WHATSAPP_URL =
+  "https://wa.me/5521996765863?text=Oi!%20Vi%20o%20Fluxo%20Cliente%20e%20quero%20tirar%20uma%20dúvida";
+
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+    </svg>
+  );
+}
+
+function WhatsAppLink({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={`inline-flex min-h-12 items-center justify-center gap-2.5 rounded-md border border-brand-bright/45 bg-brand-bright/5 px-6 text-sm font-extrabold text-brand-bright transition hover:-translate-y-0.5 hover:border-brand-bright hover:bg-brand-bright/15 focus:outline-none focus:ring-2 focus:ring-brand-bright focus:ring-offset-2 ${className}`}>
+      {children}<WhatsAppIcon className="size-4" />
+    </a>
+  );
+}
+
+function WhatsAppFloat() {
+  return (
+    <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="Falar com o criador no WhatsApp" className="fixed bottom-5 right-5 z-50 grid size-14 place-items-center rounded-full bg-brand shadow-xl shadow-brand-deep/40 ring-1 ring-brand-bright/40 transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-bright">
+      <WhatsAppIcon className="size-6" />
+    </a>
+  );
+}
+
+
 function DashboardPreview() {
   return (
     <div className="relative overflow-hidden rounded-lg border border-brand/15 bg-background shadow-2xl shadow-brand-deep/10">
@@ -159,6 +187,7 @@ function LandingPage() {
             <h1 className="text-4xl font-extrabold leading-[1.05] text-brand-deep sm:text-5xl lg:text-6xl">Pare de perder clientes da sua clínica <span className="font-editorial italic font-normal text-brand">que pedem preço e somem no WhatsApp.</span></h1>
             <p className="mt-7 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">Veja quem demonstrou interesse, quem parou de responder e quem precisa receber uma nova mensagem hoje.</p>
             <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center"><PrimaryLink>Começar agora</PrimaryLink><span className="text-xs font-semibold text-muted-foreground">7 dias grátis • Cancele quando quiser</span></div>
+            <div className="mt-4"><WhatsAppLink>Falar com o criador</WhatsAppLink></div>
             <div className="mt-7 flex flex-wrap gap-6 text-xs text-muted-foreground"><span className="flex items-center gap-2"><Check className="size-4 text-brand" />Sem integração obrigatória</span><span className="flex items-center gap-2"><Check className="size-4 text-brand" />Feito para clínicas reais</span></div>
           </div>
           <div className="landing-rise relative [animation-delay:140ms]">
@@ -255,9 +284,10 @@ function LandingPage() {
         </div>
       </section>
 
-      <section className="px-5 py-24 lg:px-8"><div className="mx-auto max-w-4xl text-center"><BarChart3 className="mx-auto size-7 text-brand" /><h2 className="mt-7 text-4xl font-extrabold text-brand-deep sm:text-6xl">Pare de deixar oportunidades <span className="font-editorial italic font-normal text-brand">esfriarem.</span></h2><p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Descubra quem precisa da sua atenção e transforme conversas esquecidas em novas oportunidades.</p><div className="mt-8"><PrimaryLink>Quero começar agora</PrimaryLink></div></div></section>
+      <section className="px-5 py-24 lg:px-8"><div className="mx-auto max-w-4xl text-center"><BarChart3 className="mx-auto size-7 text-brand" /><h2 className="mt-7 text-4xl font-extrabold text-brand-deep sm:text-6xl">Pare de deixar oportunidades <span className="font-editorial italic font-normal text-brand">esfriarem.</span></h2><p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Descubra quem precisa da sua atenção e transforme conversas esquecidas em novas oportunidades.</p><div className="mt-8"><PrimaryLink>Quero começar agora</PrimaryLink><div className="mt-4 flex justify-center"><WhatsAppLink>Falar com o criador</WhatsAppLink></div></div></div></section>
 
-      <footer className="border-t border-border"><div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 lg:px-8"><div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><Logo /><nav className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-muted-foreground" aria-label="Links do rodapé"><a href={APP_AUTH_URL} className="transition hover:text-brand">Entrar</a><a href="/contato" className="transition hover:text-brand">Contato</a><a href="/privacidade" className="transition hover:text-brand">Política de Privacidade</a><a href="/termos" className="transition hover:text-brand">Termos de Uso</a></nav></div><p className="text-xs text-muted-foreground">© 2026 Fluxo Cliente. Feito para clínicas em movimento.</p></div></footer>
+      <footer className="border-t border-border"><div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 pt-10 pb-28 sm:pb-10 lg:px-8"><div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><Logo /><nav className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-muted-foreground" aria-label="Links do rodapé"><a href={APP_AUTH_URL} className="transition hover:text-brand">Entrar</a><a href="/contato" className="transition hover:text-brand">Contato</a><a href="/privacidade" className="transition hover:text-brand">Política de Privacidade</a><a href="/termos" className="transition hover:text-brand">Termos de Uso</a></nav></div><p className="text-xs text-muted-foreground">© 2026 Fluxo Cliente. Feito para clínicas em movimento.</p></div></footer>
+      <WhatsAppFloat />
     </main>
   );
 }
