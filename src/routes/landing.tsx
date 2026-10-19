@@ -119,7 +119,7 @@ function DashboardPreview() {
           return (
             <div key={String(label)} className="rounded-md border border-border bg-card p-4">
               <div className="mb-5 flex items-center justify-between">
-                <span className="text-xs font-semibold text-muted-foreground">7 dias grátis • Cancele quando quiser</span>
+                <span className="text-xs font-semibold text-muted-foreground">{String(label)}</span>
                 <PreviewIcon className="size-4 text-brand" />
               </div>
               <p className="text-2xl font-extrabold text-brand-deep">{String(value)}</p>
@@ -240,7 +240,7 @@ function LandingPage() {
       </section>
 
       <section id="plano" className="mx-auto max-w-6xl px-5 py-24 lg:px-8">
-        <div className="grid items-center gap-14 lg:grid-cols-2"><div><SectionLabel>08 / Um plano simples</SectionLabel><h2 className="text-4xl font-extrabold text-brand-deep sm:text-5xl">Comece agora e cuide de cada <span className="font-editorial italic font-normal text-brand">oportunidade.</span></h2></div><div className="rounded-lg border border-brand/20 bg-brand-wash p-7 sm:p-9"><p className="text-sm font-extrabold uppercase tracking-[0.14em] text-brand">Fluxo Cliente Pro</p><div className="mt-5 flex items-end gap-2"><span className="text-5xl font-extrabold text-brand-deep">R$99,90</span><span className="pb-1 text-muted-foreground">/ mês</span></div><p className="mt-3 text-sm text-muted-foreground">{"\n"}</p><ul className="my-8 grid gap-3 sm:grid-cols-2">{["Gestão de clientes", "Oportunidades", "Follow-ups", "IA para mensagens", "Dashboard", "Histórico", "Resultados"].map((item) => <li key={item} className="flex items-center gap-2 text-sm font-semibold text-brand-deep"><Check className="size-4 text-brand" />{item}</li>)}</ul><PrimaryLink>Comece agora</PrimaryLink></div></div>
+        <div className="grid items-center gap-14 lg:grid-cols-2"><div><SectionLabel>08 / Um plano simples</SectionLabel><h2 className="text-4xl font-extrabold text-brand-deep sm:text-5xl">Comece agora e cuide de cada <span className="font-editorial italic font-normal text-brand">oportunidade.</span></h2></div><div className="rounded-lg border border-brand/20 bg-brand-wash p-7 sm:p-9"><p className="text-sm font-extrabold uppercase tracking-[0.14em] text-brand">Fluxo Cliente Pro</p><div className="mt-5 flex items-end gap-2"><span className="text-5xl font-extrabold text-brand-deep">R$99,90</span><span className="pb-1 text-muted-foreground">/ mês</span></div><p className="mt-3 text-sm text-muted-foreground">Comece com 7 dias grátis.</p><ul className="my-8 grid gap-3 sm:grid-cols-2">{["Gestão de clientes", "Oportunidades", "Follow-ups", "IA para mensagens", "Dashboard", "Histórico", "Resultados"].map((item) => <li key={item} className="flex items-center gap-2 text-sm font-semibold text-brand-deep"><Check className="size-4 text-brand" />{item}</li>)}</ul><PrimaryLink>Comece agora</PrimaryLink></div></div>
       </section>
 
       <section className="bg-brand-wash py-24">
