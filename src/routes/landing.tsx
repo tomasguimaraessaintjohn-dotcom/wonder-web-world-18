@@ -119,7 +119,7 @@ function DashboardPreview() {
           return (
             <div key={String(label)} className="rounded-md border border-border bg-card p-4">
               <div className="mb-5 flex items-center justify-between">
-                <span className="text-xs font-semibold text-muted-foreground">{String(label)}</span>
+                <span className="text-xs font-semibold text-muted-foreground">7 dias grátis • Cancele quando quiser</span>
                 <PreviewIcon className="size-4 text-brand" />
               </div>
               <p className="text-2xl font-extrabold text-brand-deep">{String(value)}</p>
@@ -158,7 +158,7 @@ function LandingPage() {
             <SectionLabel>Para clínicas de estética</SectionLabel>
             <h1 className="text-4xl font-extrabold leading-[1.05] text-brand-deep sm:text-5xl lg:text-6xl">Pare de perder clientes da sua clínica <span className="font-editorial italic font-normal text-brand">que pedem preço e somem no WhatsApp.</span></h1>
             <p className="mt-7 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">Veja quem demonstrou interesse, quem parou de responder e quem precisa receber uma nova mensagem hoje.</p>
-            <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center"><PrimaryLink>Começar agora</PrimaryLink><span className="text-xs font-semibold text-muted-foreground">  . Cancele quando quiser</span></div>
+            <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center"><PrimaryLink>Começar agora</PrimaryLink><span className="text-xs font-semibold text-muted-foreground">7 dias grátis • Cancele quando quiser</span></div>
             <div className="mt-7 flex flex-wrap gap-6 text-xs text-muted-foreground"><span className="flex items-center gap-2"><Check className="size-4 text-brand" />Sem integração obrigatória</span><span className="flex items-center gap-2"><Check className="size-4 text-brand" />Feito para clínicas reais</span></div>
           </div>
           <div className="landing-rise relative [animation-delay:140ms]">
