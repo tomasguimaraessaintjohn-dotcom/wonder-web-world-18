@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import {
   ArrowRight,
   BarChart3,
@@ -66,7 +67,7 @@ const trackingMetrics = [
   ["Follow-ups realizados", "7"],
   ["Clientes recuperados", "8"],
   ["Agendamentos recuperados", "6"],
-  ["Valor potencial recuperado", "R$ 7.480"],
+  ["Valor potencial em acompanhamento", "R$ 8.450"],
 ];
 
 const faqs = [
@@ -165,6 +166,39 @@ function DashboardPreview() {
   );
 }
 
+const demoCases = [
+  { name: "Mariana Costa", procedure: "Preenchimento labial", stage: "Orçamento enviado", when: "Há 3 dias", message: "Oi, Mariana! Tudo bem? Passando para saber se ficou alguma dúvida sobre o orçamento. Se quiser, posso te explicar os próximos passos." },
+  { name: "Ana Ribeiro", procedure: "Botox", stage: "Em conversa", when: "Há 2 dias", message: "Oi, Ana! Como você está? Estou à disposição caso queira conversar sobre o procedimento ou tirar alguma dúvida." },
+  { name: "Camila Souza", procedure: "Bioestimulador", stage: "Aguardando confirmação", when: "Ontem", message: "Oi, Camila! Passando para saber se você gostaria de seguir com o agendamento. Posso verificar os horários disponíveis para você." },
+];
+
+function InteractiveDemo() {
+  const [selected, setSelected] = useState(0);
+  const current = demoCases[selected];
+  return (
+    <div id="demo" className="rounded-lg border border-brand/20 bg-background p-5 shadow-xl shadow-brand-deep/10 sm:p-7">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div><p className="text-xs font-extrabold uppercase tracking-[0.16em] text-brand">Demonstração interativa</p><h3 className="mt-1 text-xl font-extrabold text-brand-deep">Veja como organizar os acompanhamentos</h3></div>
+        <span className="rounded-full bg-brand-wash px-3 py-1 text-xs font-bold text-brand">Dados fictícios</span>
+      </div>
+      <div className="mt-6 grid gap-2 sm:grid-cols-3">
+        {demoCases.map((person, index) => (
+          <button key={person.name} type="button" onClick={() => setSelected(index)} aria-pressed={selected === index} className={"rounded-md border p-3 text-left transition " + (selected === index ? "border-brand bg-brand-wash" : "border-border hover:border-brand/50")}>
+            <span className="block text-sm font-extrabold text-brand-deep">{person.name}</span>
+            <span className="mt-1 block text-xs text-muted-foreground">{person.procedure}</span>
+          </button>
+        ))}
+      </div>
+      <div className="mt-4 rounded-md bg-brand-wash p-5">
+        <div className="flex flex-wrap items-center justify-between gap-2"><p className="font-extrabold text-brand-deep">{current.stage}</p><span className="text-xs font-semibold text-muted-foreground">{current.when}</span></div>
+        <p className="mt-4 text-sm leading-7 text-brand-deep">{current.message}</p>
+        <p className="mt-4 text-xs font-bold text-brand">Sugestão de mensagem para a equipe revisar e enviar</p>
+      </div>
+      <p className="mt-4 text-xs leading-5 text-muted-foreground">Esta é uma demonstração ilustrativa. Não há conexão com WhatsApp e nenhuma mensagem é enviada automaticamente.</p>
+    </div>
+  );
+}
+
 function LandingPage() {
   return (
     <main id="inicio" className="landing-navy overflow-hidden bg-background text-foreground">
@@ -173,6 +207,7 @@ function LandingPage() {
           <Logo />
           <nav className="hidden items-center gap-8 text-sm font-semibold text-muted-foreground md:flex" aria-label="Navegação principal">
             <a href="#como-funciona" className="transition hover:text-brand">Como funciona</a>
+            <a href="#demo" className="transition hover:text-brand">Demonstração</a>
             <a href="#recursos" className="transition hover:text-brand">Recursos</a>
             <a href="#plano" className="transition hover:text-brand">Plano</a>
           </nav>
@@ -184,9 +219,9 @@ function LandingPage() {
         <div className="mx-auto grid min-h-[720px] max-w-6xl items-center gap-14 px-5 py-20 lg:grid-cols-[1.02fr_.98fr] lg:px-8 lg:py-24">
           <div className="landing-rise max-w-2xl">
             <SectionLabel>Para clínicas de estética</SectionLabel>
-            <h1 className="text-4xl font-extrabold leading-[1.05] text-brand-deep sm:text-5xl lg:text-6xl">Pare de perder clientes da sua clínica <span className="font-editorial italic font-normal text-brand">que pedem preço e somem no WhatsApp.</span></h1>
-            <p className="mt-7 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">Veja quem demonstrou interesse, quem parou de responder e quem precisa receber uma nova mensagem hoje.</p>
-            <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center"><PrimaryLink>Começar agora</PrimaryLink><span className="text-xs font-semibold text-muted-foreground">7 dias grátis • Cancele quando quiser</span></div>
+            <h1 className="text-4xl font-extrabold leading-[1.05] text-brand-deep sm:text-5xl lg:text-6xl">Sua clínica não precisa perder oportunidades <span className="font-editorial italic font-normal text-brand">por falta de acompanhamento.</span></h1>
+            <p className="mt-7 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">Organize os contatos da sua clínica, acompanhe cada oportunidade e saiba qual é o próximo passo — sem depender da memória ou de planilhas.</p>
+            <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center"><PrimaryLink>Testar grátis por 7 dias</PrimaryLink><a href="#demo" className="text-sm font-bold text-brand underline-offset-4 hover:underline">Ver demonstração</a><span className="text-xs font-semibold text-muted-foreground">Depois, R$ 99,90/mês • Consulte as condições</span></div>
             <div className="mt-4"><WhatsAppLink>Falar com o criador</WhatsAppLink></div>
             <div className="mt-7 flex flex-wrap gap-6 text-xs text-muted-foreground"><span className="flex items-center gap-2"><Check className="size-4 text-brand" />Sem integração obrigatória</span><span className="flex items-center gap-2"><Check className="size-4 text-brand" />Feito para clínicas reais</span></div>
           </div>
@@ -210,7 +245,7 @@ function LandingPage() {
       <section id="recursos" className="bg-brand-wash py-24">
         <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
           <div><SectionLabel>02 / Produto real</SectionLabel><h2 className="text-4xl font-extrabold leading-tight text-brand-deep sm:text-5xl">Abra o Fluxo Cliente e saiba quem precisa da sua <span className="font-editorial italic font-normal text-brand">atenção hoje.</span></h2><p className="mt-6 text-lg leading-8 text-muted-foreground">Em vez de depender da memória da equipe, o Fluxo Cliente mostra quais oportunidades merecem atenção.</p></div>
-          <DashboardPreview />
+          <InteractiveDemo />
         </div>
       </section>
 
@@ -247,7 +282,7 @@ function LandingPage() {
               </div>
             ))}
           </div>
-          <p className="mt-8 text-sm text-muted-foreground">Exemplos de demonstração da futura experiência. As mensagens não são enviadas automaticamente.</p>
+          <p className="mt-8 text-sm text-muted-foreground">Exemplos ilustrativos. Revise e personalize cada mensagem antes de enviar; o Fluxo Cliente não envia mensagens automaticamente.</p>
         </div>
       </section>
 
