@@ -34,8 +34,11 @@ function ContatoPage() {
       <section className="mx-auto max-w-4xl px-5 py-20 lg:px-8">
         <h1 className="text-4xl font-extrabold text-brand-deep sm:text-5xl">Contato</h1>
         <p className="mt-6 max-w-2xl leading-8 text-muted-foreground">
-          Estamos preparando os canais de atendimento do Fluxo Cliente. Em breve você encontrará aqui como falar com a nossa equipe.
+          Quer conhecer melhor o Fluxo Cliente ou tirar uma dúvida? Fale diretamente pelo WhatsApp. Nossa equipe poderá orientar você sobre o acesso, o período de teste e o funcionamento da plataforma.
         </p>
+        <a href="https://wa.me/5521996765863?text=Oi!%20Vim%20pela%20p%C3%A1gina%20de%20contato%20do%20Fluxo%20Cliente%20e%20quero%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex min-h-12 items-center gap-2 rounded-md bg-brand px-6 text-sm font-extrabold text-primary-foreground transition hover:bg-brand-deep">
+          Falar pelo WhatsApp <MessageCircleMore className="size-4" />
+        </a>
       </section>
     </main>
   );
